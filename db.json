@@ -1,0 +1,73 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "teamId": 1
+    },
+    {
+      "id": 2,
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "teamId": null
+    },
+    {
+      "id": 3,
+      "firstName": "Mike",
+      "lastName": "Johnson",
+      "teamId": 2
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "Red Dragons",
+      "foundedYear": 1990,
+      "location": "New York",
+      "players": [1]
+    },
+    {
+      "id": 2,
+      "name": "Blue Sharks",
+      "foundedYear": 1985,
+      "location": "Los Angeles",
+      "players": [3]
+    },
+    {
+      "id": 3,
+      "name": "Green Eagles",
+      "foundedYear": 2000,
+      "location": "Chicago",
+      "players": []
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "title": "Season Opener",
+      "date": "2023-12-01",
+      "location": "New York Stadium",
+      "duration": 90,
+      "score": {
+        "team1": 2,
+        "team2": 1
+      },
+      "team1Id": 1,
+      "team2Id": 2
+    },
+    {
+      "id": 2,
+      "title": "City Derby",
+      "date": "2023-12-05",
+      "location": "Los Angeles Arena",
+      "duration": 120,
+      "score": {
+        "team1": 3,
+        "team2": 3
+      },
+      "team1Id": 2,
+      "team2Id": 3
+    }
+  ]
+}

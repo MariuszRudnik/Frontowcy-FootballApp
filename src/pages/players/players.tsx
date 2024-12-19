@@ -8,7 +8,7 @@ import {
   PlayerList,
   TopWrapper,
   Wrapper,
-} from "./playersStyled.ts";
+} from "./playersStyled.styled.ts";
 import FormPlayerButton from "./Components/formAddPlayers.tsx";
 
 const PlayersList: React.FC = () => {

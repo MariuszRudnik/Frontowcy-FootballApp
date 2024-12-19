@@ -12,3 +12,26 @@ export const fetchPlayers = async (): Promise<Player[]> => {
   }
   return response.json();
 };
+
+export const addPlayer = async (
+  player: Omit<Player, "id">,
+): Promise<Player> => {
+  const newPlayer = {
+    ...player,
+    id: Date.now().toString(),
+  };
+
+  const response = await fetch("http://localhost:3001/players", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newPlayer),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to add player.");
+  }
+
+  return response.json();
+};

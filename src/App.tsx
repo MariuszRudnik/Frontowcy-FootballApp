@@ -7,7 +7,7 @@ import ViewSwitcher from "./components/layout/ViewSwitcher.tsx";
 
 const queryClient = new QueryClient();
 function App() {
-  const [isLightTheme, setIsLightTheme] = useState(true);
+  const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
   return (
     <>
       <QueryClientProvider client={queryClient}>

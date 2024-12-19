@@ -34,7 +34,7 @@ const Button = styled.button<ButtonProps>`
 
 const View = styled.div<ViewProps>`
   margin-top: 20px;
-  padding: 50px;
+  padding: 10px 20px;
   background-color: ${(props) => props.bgColor};
   color: beige;
   border-radius: 10px;

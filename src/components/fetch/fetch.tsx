@@ -4,9 +4,10 @@ export interface Player {
   lastName: string;
   teamId: number | null;
 }
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const fetchPlayers = async (): Promise<Player[]> => {
-  const response = await fetch("http://localhost:3001/players");
+  const response = await fetch(`${BASE_URL}/players`);
   if (!response.ok) {
     throw new Error("Failed to fetch players.");
   }
@@ -21,7 +22,7 @@ export const addPlayer = async (
     id: Date.now().toString(),
   };
 
-  const response = await fetch("http://localhost:3001/players", {
+  const response = await fetch(`${BASE_URL}/players`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

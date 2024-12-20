@@ -10,6 +10,13 @@ import {
   Wrapper,
 } from "./playersStyled.styled.ts";
 import FormPlayerButton from "./Components/formAddPlayers.tsx";
+import {
+  ButtonWrapper,
+  DeleteButton,
+  EditButton,
+} from "./Components/FormPlayerButton.styled.ts";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { BiSolidEdit } from "react-icons/bi";
 
 const PlayersList: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -46,6 +53,15 @@ const PlayersList: React.FC = () => {
           <PlayerItem key={player.id}>
             {player.firstName} {player.lastName} (Team ID:{" "}
             {player.teamId ?? "None"})
+            <ButtonWrapper>
+              <EditButton>
+                Edit <BiSolidEdit />
+              </EditButton>
+              <DeleteButton>
+                Delete
+                <RiDeleteBinLine />
+              </DeleteButton>
+            </ButtonWrapper>
           </PlayerItem>
         ))}
       </PlayerList>

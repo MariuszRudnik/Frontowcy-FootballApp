@@ -22,6 +22,9 @@ export const PlayerItem = styled.div`
   text-align: left;
   font-size: 16px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 
   &:hover {
     background-color: rgba(244, 253, 195, 0.15);

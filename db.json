@@ -1,93 +1,9 @@
 {
   "players": [
     {
-      "id": "1",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": 1
-    },
-    {
-      "id": "2",
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "teamId": null
-    },
-    {
-      "id": "3",
-      "firstName": "Mike",
-      "lastName": "Johnson",
-      "teamId": 2
-    },
-    {
       "id": "1734558427666",
       "firstName": "John",
       "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734558436244",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734558998267",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734559006546",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734559296409",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734559346927",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734559410627",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734559411413",
-      "firstName": "John",
-      "lastName": "Doe",
-      "teamId": null
-    },
-    {
-      "id": "1734559787720",
-      "firstName": "eee",
-      "lastName": "eee",
-      "teamId": null
-    },
-    {
-      "id": "1734559826315",
-      "firstName": "ddd",
-      "lastName": "ddd",
-      "teamId": null
-    },
-    {
-      "id": "1734559936028",
-      "firstName": "ddd",
-      "lastName": "dddd",
-      "teamId": null
-    },
-    {
-      "id": "1734560007982",
-      "firstName": "ssss",
-      "lastName": "ssss",
       "teamId": null
     },
     {
@@ -97,21 +13,9 @@
       "teamId": null
     },
     {
-      "id": "1734643894631",
-      "firstName": "www",
-      "lastName": "www",
-      "teamId": null
-    },
-    {
-      "id": "1734644515591",
-      "firstName": "ddd",
-      "lastName": "dd",
-      "teamId": null
-    },
-    {
-      "id": "1734644544297",
-      "firstName": "dd",
-      "lastName": "dd",
+      "id": "1734732970648",
+      "firstName": "sss",
+      "lastName": "sss",
       "teamId": null
     }
   ],

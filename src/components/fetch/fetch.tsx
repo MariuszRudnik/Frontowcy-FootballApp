@@ -36,3 +36,16 @@ export const addPlayer = async (
 
   return response.json();
 };
+
+export const deletePlayer = async (id: string): Promise<void> => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_BASE_URL}/players/${id}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to delete player.");
+  }
+};

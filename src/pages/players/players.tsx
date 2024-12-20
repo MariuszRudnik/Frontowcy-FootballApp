@@ -12,11 +12,11 @@ import {
 import FormPlayerButton from "./Components/formAddPlayers.tsx";
 import {
   ButtonWrapper,
-  DeleteButton,
   EditButton,
 } from "./Components/FormPlayerButton.styled.ts";
-import { RiDeleteBinLine } from "react-icons/ri";
+
 import { BiSolidEdit } from "react-icons/bi";
+import DeletePlayerButton from "./Components/DeleteButton.tsx";
 
 const PlayersList: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -57,10 +57,8 @@ const PlayersList: React.FC = () => {
               <EditButton>
                 Edit <BiSolidEdit />
               </EditButton>
-              <DeleteButton>
-                Delete
-                <RiDeleteBinLine />
-              </DeleteButton>
+
+              <DeletePlayerButton playerId={player.id} />
             </ButtonWrapper>
           </PlayerItem>
         ))}

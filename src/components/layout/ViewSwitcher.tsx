@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PlayersList from "../../pages/players/players.tsx";
 import TeamsList from "../../pages/teams/trams.tsx";
+import GamesList from "../../pages/games/Games.tsx";
 
 interface ButtonProps {
   bgColor?: string;
@@ -66,11 +67,15 @@ const ViewSwitcher: React.FC = () => {
         </View>
       )}
       {activeView === "teams" && (
-        <View bgColor={"#12a3d6"}>
+        <View bgColor={"#01374a"}>
           <TeamsList />
         </View>
       )}
-      {activeView === "games" && <View bgColor="green">Games View</View>}
+      {activeView === "games" && (
+        <View bgColor={"#654d20"}>
+          <GamesList />
+        </View>
+      )}
     </Wrapper>
   );
 };

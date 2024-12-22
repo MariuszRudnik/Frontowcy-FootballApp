@@ -9,7 +9,8 @@ import {
   TopWrapper,
   Wrapper,
 } from "./playersStyled.styled.ts";
-import FormPlayerButton from "./Components/formAddPlayers.tsx";
+import FormAddPlayers from "./Components/formAddPlayers.tsx";
+import FormUpdatePlayer from "./Components/FormUpdatePlayer.tsx";
 import {
   ButtonWrapper,
   EditButton,
@@ -20,6 +21,9 @@ import DeletePlayerButton from "./Components/DeleteButton.tsx";
 
 const PlayersList: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
+
   const {
     data: players,
     isLoading,
@@ -29,10 +33,20 @@ const PlayersList: React.FC = () => {
     queryFn: fetchPlayers,
   });
 
+  const handleEditClick = (playerId: string) => {
+    setSelectedPlayerId(playerId);
+    setShowUpdateForm(true);
+  };
+
   return (
     <Wrapper>
-      {showForm && (
-        <FormPlayerButton isOpen={showForm} setIsOpen={setShowForm} />
+      {showForm && <FormAddPlayers isOpen={showForm} setIsOpen={setShowForm} />}
+      {showUpdateForm && selectedPlayerId && (
+        <FormUpdatePlayer
+          isOpen={showUpdateForm}
+          setIsOpen={setShowUpdateForm}
+          playerId={selectedPlayerId}
+        />
       )}
       <TopWrapper>
         <AddPlayerButton onClick={() => setShowForm(!showForm)}>
@@ -54,7 +68,7 @@ const PlayersList: React.FC = () => {
             {player.firstName} {player.lastName} (Team ID:{" "}
             {player.teamId ?? "None"})
             <ButtonWrapper>
-              <EditButton>
+              <EditButton onClick={() => handleEditClick(player.id)}>
                 Edit <BiSolidEdit />
               </EditButton>
 

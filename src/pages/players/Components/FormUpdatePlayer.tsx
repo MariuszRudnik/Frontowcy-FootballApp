@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import React, { useState, useEffect } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Button,
   CloseButton,
@@ -8,7 +8,10 @@ import {
   Input,
   Overlay,
 } from "./FormPlayerButton.styled.ts";
-import { addPlayer } from "../../../components/fetch/fetch.tsx";
+import {
+  fetchPlayerById,
+  updatePlayer,
+} from "../../../components/fetch/fetch.tsx";
 
 interface Player {
   id: string;
@@ -17,30 +20,43 @@ interface Player {
   teamId: number | null;
 }
 
-interface FormPlayerButtonProps {
+interface FormUpdatePlayerProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  playerId: string;
 }
 
-const FormAddPlayers: React.FC<FormPlayerButtonProps> = ({
+const FormUpdatePlayer: React.FC<FormUpdatePlayerProps> = ({
   isOpen,
   setIsOpen,
+  playerId,
 }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
   const queryClient = useQueryClient();
 
-  const mutation = useMutation<Player, Error, Omit<Player, "id">>({
-    mutationFn: addPlayer,
+  const { data: player } = useQuery<Player>({
+    queryKey: ["player", playerId],
+    queryFn: () => fetchPlayerById(playerId),
+    enabled: isOpen,
+  });
+
+  useEffect(() => {
+    if (player) {
+      setFirstName(player.firstName);
+      setLastName(player.lastName);
+    }
+  }, [player]);
+
+  const mutation = useMutation<Player, Error, Player>({
+    mutationFn: updatePlayer,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["players"] });
-
-      setFirstName("");
-      setLastName("");
+      setIsOpen(false);
     },
     onError: () => {
-      alert("Failed to add player.");
+      alert("Failed to update player.");
     },
   });
 
@@ -53,11 +69,11 @@ const FormAddPlayers: React.FC<FormPlayerButtonProps> = ({
     }
 
     mutation.mutate({
+      id: playerId,
       firstName,
       lastName,
-      teamId: null,
+      teamId: player?.teamId ?? null,
     });
-    setIsOpen(false);
   };
 
   const handleClose = () => {
@@ -84,7 +100,9 @@ const FormAddPlayers: React.FC<FormPlayerButtonProps> = ({
             onChange={(e) => setLastName(e.target.value)}
           />
           <Button type="submit" isPending={mutation.status === "pending"}>
-            {mutation.status === "pending" ? "Adding Player..." : "Add Player"}
+            {mutation.status === "pending"
+              ? "Updating Player..."
+              : "Update Player"}
           </Button>
         </Form>
       </FormWrapper>
@@ -92,4 +110,4 @@ const FormAddPlayers: React.FC<FormPlayerButtonProps> = ({
   );
 };
 
-export default FormAddPlayers;
+export default FormUpdatePlayer;

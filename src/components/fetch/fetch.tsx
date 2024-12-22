@@ -49,3 +49,27 @@ export const deletePlayer = async (id: string): Promise<void> => {
     throw new Error("Failed to delete player.");
   }
 };
+
+export const fetchPlayerById = async (id: string): Promise<Player> => {
+  const response = await fetch(`http://localhost:3001/players/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch player.");
+  }
+  return response.json();
+};
+
+export const updatePlayer = async (player: Player): Promise<Player> => {
+  const response = await fetch(`http://localhost:3001/players/${player.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(player),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update player.");
+  }
+
+  return response.json();
+};

@@ -34,7 +34,7 @@ export const Input = styled.input`
   font-size: 16px;
 `;
 
-export const Button = styled.button<{ isPending: boolean }>`
+export const ButtonEdit = styled.button<{ isPending: boolean }>`
   padding: 10px 20px;
   border-radius: 5px;
   background-color: ${(props) => (props.isPending ? "#ccc" : "#6cccac")};

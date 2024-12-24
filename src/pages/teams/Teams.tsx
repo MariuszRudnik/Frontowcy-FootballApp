@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTeams, Team } from "../../components/fetch/fetch.tsx";
-import FormAddTeams from "./FormAddTeams.tsx";
+import FormAddTeams from "./Components/FormAddTeams.tsx";
 import styled from "styled-components";
-import DeleteTeamButton from "./DeleteTeamButton.tsx";
+import DeleteTeamButton from "./Components/DeleteTeamButton.tsx";
+import { DivCenter } from "../../components/styles/styles.styles.ts";
+import FormUpdateTeam from "./Components/FormUpdateTeam.tsx";
+import { BiSolidEdit } from "react-icons/bi";
+import { EditButton } from "../players/Components/FormPlayerButton.styled.ts";
 
-// Stylowanie komponentów
 const Wrapper = styled.div`
   padding: 20px;
 `;
@@ -71,6 +74,9 @@ const TeamItem = styled.div`
 
 const TeamsList: React.FC = () => {
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [selectedTeamId, setSelectedTeamId] = useState<string | null>(null);
+
   const {
     data: teams,
     isLoading,
@@ -82,8 +88,20 @@ const TeamsList: React.FC = () => {
     retry: 2,
   });
 
+  const handleEditClick = (teamId: string) => {
+    setShowUpdateForm(true);
+    setSelectedTeamId(teamId);
+  };
+
   return (
     <Wrapper>
+      {showUpdateForm && selectedTeamId && (
+        <FormUpdateTeam
+          isOpen={showUpdateForm}
+          setIsOpen={setShowUpdateForm}
+          teamId={selectedTeamId}
+        />
+      )}
       <TopWrapper>
         <h1>Teams List</h1>
         <AddTeamButton onClick={() => setShowAddForm(true)}>
@@ -115,7 +133,12 @@ const TeamsList: React.FC = () => {
                 {team.name} - Founded: {team.foundedYear}, Location:{" "}
                 {team.location}
               </span>
-              <DeleteTeamButton teamId={team.id} />
+              <DivCenter>
+                <EditButton onClick={() => handleEditClick(team.id)}>
+                  Edit <BiSolidEdit />
+                </EditButton>
+                <DeleteTeamButton teamId={team.id} />
+              </DivCenter>
             </TeamItem>
           ))}
         </TeamList>

@@ -14,7 +14,7 @@ import {
   TopWrapper,
   Wrapper,
 } from "./playersStyled.styled.ts";
-import FormAddPlayers from "./Components/formAddPlayers.tsx";
+import FormAddPlayers from "./Components/FormAddPlayers.tsx";
 import FormUpdatePlayer from "./Components/FormUpdatePlayer.tsx";
 import {
   ButtonWrapper,

@@ -159,3 +159,25 @@ export const deleteTeam = async (teamId: string): Promise<void> => {
     throw new Error("Failed to delete team");
   }
 };
+
+export const fetchTeamById = async (teamId: string): Promise<Team> => {
+  const response = await fetch(`${BASE_URL}/teams/${teamId}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch team");
+  }
+  return response.json();
+};
+
+export const updateTeam = async (team: Team): Promise<Team> => {
+  const response = await fetch(`${BASE_URL}/teams/${team.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(team),
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update team");
+  }
+  return response.json();
+};

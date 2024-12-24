@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PlayersList from "../../pages/players/players.tsx";
-import TeamsList from "../../pages/teams/trams.tsx";
+import TeamsList from "../../pages/teams/Teams.tsx";
 import GamesList from "../../pages/games/Games.tsx";
 
 interface ButtonProps {

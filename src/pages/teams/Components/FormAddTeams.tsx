@@ -5,15 +5,15 @@ import {
   fetchPlayers,
   Player,
   Team,
-} from "../../components/fetch/fetch.tsx";
+} from "../../../components/fetch/fetch.tsx";
 import {
   CloseButton,
   Form,
   FormWrapper,
   Input,
   Overlay,
-} from "../players/Components/FormPlayerButton.styled.ts";
-import { Select } from "./teams.styles.ts";
+} from "../../players/Components/FormPlayerButton.styled.ts";
+import { Select } from "../teams.styles.ts";
 import styled from "styled-components";
 
 interface FormTeamButtonProps {
@@ -21,7 +21,7 @@ interface FormTeamButtonProps {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-export const Button = styled.button<{ isPending: boolean }>`
+export const ButtonSubmit = styled.button<{ isPending: boolean }>`
   padding: 10px 20px;
   border-radius: 5px;
   background-color: ${(props) => (props.isPending ? "#ccc" : "#6cccac")};
@@ -130,9 +130,9 @@ const FormAddTeams: React.FC<FormTeamButtonProps> = ({ isOpen, setIsOpen }) => {
                 ))
             )}
           </Select>
-          <Button type="submit" isPending={mutation.status === "pending"}>
+          <ButtonSubmit type="submit" isPending={mutation.status === "pending"}>
             {mutation.status === "pending" ? "Adding Team..." : "Add Team"}
-          </Button>
+          </ButtonSubmit>
         </Form>
       </FormWrapper>
     </Overlay>

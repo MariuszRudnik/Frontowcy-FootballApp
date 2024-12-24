@@ -1,8 +1,8 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { DeleteButton } from "../players/Components/FormPlayerButton.styled.ts";
+import { DeleteButton } from "../../players/Components/FormPlayerButton.styled.ts";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { deleteTeam } from "../../components/fetch/fetch.tsx";
+import { deleteTeam } from "../../../components/fetch/fetch.tsx";
 
 interface DeleteTeamButtonProps {
   teamId: string;

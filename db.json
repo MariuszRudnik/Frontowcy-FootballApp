@@ -4,35 +4,28 @@
       "id": "1734870518437",
       "firstName": "Now ",
       "lastName": "Produk",
-      "teamId": "92c7"
+      "teamId": "eed9"
     },
     {
       "id": "1734875100099",
-      "firstName": "ssss",
-      "lastName": "ssss",
-      "teamId": "841a"
+      "firstName": "Nowy",
+      "lastName": "Tekst",
+      "teamId": null
     },
     {
       "id": "1734890499162",
       "firstName": "Nowy",
       "lastName": "Stary",
-      "teamId": "841a"
+      "teamId": null
     }
   ],
   "teams": [
     {
-      "id": "92c7",
-      "name": "Suepr Drurzyna",
-      "foundedYear": 1992,
-      "location": "Polska",
-      "players": [1734870518437]
-    },
-    {
-      "id": "841a",
+      "id": "eed9",
       "name": "Nowy",
-      "foundedYear": 123,
-      "location": "dd",
-      "players": [1734875100099, 1734890499162]
+      "foundedYear": 2342,
+      "location": "Poland",
+      "players": ["1734870518437"]
     }
   ],
   "games": [

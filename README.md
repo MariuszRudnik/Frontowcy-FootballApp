@@ -61,7 +61,7 @@ FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sport
 
 1. Sklonuj repozytorium:
    ```bash
-   git clone https://github.com/your-username/footballapp.git
+   git clone https://github.com/MariuszRudnik/Frontowcy-FootballApp/
    ```
 2. Przejdź do katalogu projektu:
    ```bash
@@ -79,14 +79,6 @@ FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sport
    ```bash
    pnpm start
    ```
-
----
-
-## Praca zespołowa
-
-- Używaj systemu kontroli wersji Git.
-- Pracuj na oddzielnych gałęziach, aby unikać konfliktów.
-- Regularnie wykonuj merge gałęzi do głównej.
 
 ---
 

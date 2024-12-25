@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchGames, Game } from "../../components/fetch/fetch.tsx";
 import styled from "styled-components";
 import FormAddGames from "./FormAddGames.tsx";
+import { EditButton } from "../players/Components/FormPlayerButton.styled.ts";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -89,14 +90,18 @@ const GamesList: React.FC = () => {
                 Date: {game.date} | Location: {game.location}
               </p>
               <p>Duration: {game.duration} minutes</p>
+              <div>
+                <p>
+                  Score: {game.score.team1} - {game.score.team2}
+                </p>
+                <p>
+                  Teams: {game.team1Id} vs {game.team2Id}
+                </p>
+              </div>
             </div>
+
             <div>
-              <p>
-                Score: {game.score.team1} - {game.score.team2}
-              </p>
-              <p>
-                Teams: {game.team1Id} vs {game.team2Id}
-              </p>
+              <EditButton onClick={() => console.log("ss")}>Edit</EditButton>
             </div>
           </GameItem>
         ))}

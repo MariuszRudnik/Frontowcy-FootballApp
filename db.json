@@ -2,13 +2,13 @@
   "players": [
     {
       "id": "1734870518437",
-      "firstName": "Now ",
+      "firstName": "Nowe",
       "lastName": "Produk",
       "teamId": null
     },
     {
       "id": "1734890499162",
-      "firstName": "Nowy",
+      "firstName": "Nowe",
       "lastName": "Stary",
       "teamId": "e76b"
     },
@@ -17,12 +17,18 @@
       "firstName": "Tomasz ",
       "lastName": "Lewandowski",
       "teamId": null
+    },
+    {
+      "id": "1735154259734",
+      "firstName": "Robert",
+      "lastName": "Lewandowski",
+      "teamId": null
     }
   ],
   "teams": [
     {
       "id": "d0d3",
-      "name": "Hura ",
+      "name": "Hura 2",
       "foundedYear": 1993,
       "location": "Polad2",
       "players": []

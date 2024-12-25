@@ -43,24 +43,11 @@
   ],
   "games": [
     {
-      "id": "1",
-      "title": "Season Opener",
-      "date": "2023-12-01",
-      "location": "New York Stadium",
-      "duration": 90,
-      "score": {
-        "team1": 2,
-        "team2": 1
-      },
-      "team1Id": 1,
-      "team2Id": 2
-    },
-    {
       "id": "2",
       "title": "City Derby",
       "date": "2023-12-05",
       "location": "Los Angeles Arena",
-      "duration": 120,
+      "duration": 125,
       "score": {
         "team1": 3,
         "team2": 3
@@ -73,13 +60,13 @@
       "title": "Nowy mecz",
       "date": "2023-03-21",
       "location": "Poland",
-      "duration": 90,
-      "team1Id": "d0d3",
-      "team2Id": "e76b",
+      "duration": 100,
       "score": {
-        "team1": 4,
-        "team2": 3
-      }
+        "team1": 9,
+        "team2": 6
+      },
+      "team1Id": "d0d3",
+      "team2Id": "e76b"
     }
   ]
 }

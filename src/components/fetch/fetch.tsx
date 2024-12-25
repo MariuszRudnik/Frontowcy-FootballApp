@@ -202,3 +202,36 @@ export const addGame = async (game: Omit<Game, "id">): Promise<Game> => {
 
   return response.json();
 };
+
+export const fetchGameById = async (id: string): Promise<Game> => {
+  const response = await fetch(`${BASE_URL}/games/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch game.");
+  }
+  return response.json();
+};
+
+export const updateGame = async (game: Game): Promise<Game> => {
+  const response = await fetch(`${BASE_URL}/games/${game.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(game),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update game.");
+  }
+
+  return response.json();
+};
+export const deleteGame = async (id: string): Promise<void> => {
+  const response = await fetch(`${BASE_URL}/games/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete game.");
+  }
+};

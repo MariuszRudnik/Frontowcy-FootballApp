@@ -1,8 +1,11 @@
 import React from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { DeleteButton } from "../../players/Components/FormPlayerButton.styled.ts";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { deleteTeam } from "../../../components/fetch/fetch.tsx";
+import {
+  deleteTeam,
+  fetchGames,
+  Game,
+} from "../../../components/fetch/fetch.tsx";
 
 interface DeleteTeamButtonProps {
   teamId: string;
@@ -11,8 +14,13 @@ interface DeleteTeamButtonProps {
 const DeleteTeamButton: React.FC<DeleteTeamButtonProps> = ({ teamId }) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
-    mutationFn: () => deleteTeam(teamId),
+  const { data: games } = useQuery<Game[]>({
+    queryKey: ["games"],
+    queryFn: fetchGames,
+  });
+
+  const deleteMutation = useMutation<void, Error, string>({
+    mutationFn: deleteTeam,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["teams"] });
     },
@@ -21,12 +29,23 @@ const DeleteTeamButton: React.FC<DeleteTeamButtonProps> = ({ teamId }) => {
     },
   });
 
-  return (
-    <DeleteButton onClick={() => mutation.mutate()}>
-      Delete
-      <RiDeleteBinLine />
-    </DeleteButton>
-  );
-};
+  const handleDeleteClick = () => {
+    const isTeamInGame = games?.some(
+      (game) => game.team1Id === teamId || game.team2Id === teamId,
+    );
 
+    if (isTeamInGame) {
+      alert(
+        "This team cannot be deleted because it has participated in games.",
+      );
+      return;
+    }
+
+    if (window.confirm("Are you sure you want to delete this team?")) {
+      deleteMutation.mutate(teamId);
+    }
+  };
+
+  return <DeleteButton onClick={handleDeleteClick}>Delete</DeleteButton>;
+};
 export default DeleteTeamButton;

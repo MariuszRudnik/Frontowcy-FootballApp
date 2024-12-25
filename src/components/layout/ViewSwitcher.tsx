@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PlayersList from "../../pages/players/players.tsx";
-import TeamsList from "../../pages/teams/trams.tsx";
+import TeamsList from "../../pages/teams/Teams.tsx";
+import GamesList from "../../pages/games/Games.tsx";
 
 interface ButtonProps {
   bgColor?: string;
@@ -33,12 +34,33 @@ const Button = styled.button<ButtonProps>`
 `;
 
 const View = styled.div<ViewProps>`
+  position: relative;
   margin-top: 20px;
   padding: 10px 20px;
   background-color: ${(props) => props.bgColor};
   color: beige;
   border-radius: 10px;
   font-size: 18px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/src/components/screen/players.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const ViewSwitcher: React.FC = () => {
@@ -66,11 +88,15 @@ const ViewSwitcher: React.FC = () => {
         </View>
       )}
       {activeView === "teams" && (
-        <View bgColor={"#12a3d6"}>
+        <View bgColor={"#01374a"}>
           <TeamsList />
         </View>
       )}
-      {activeView === "games" && <View bgColor="green">Games View</View>}
+      {activeView === "games" && (
+        <View bgColor={"#654d20"}>
+          <GamesList />
+        </View>
+      )}
     </Wrapper>
   );
 };

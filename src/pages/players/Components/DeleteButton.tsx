@@ -3,7 +3,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { DeleteButton } from "./FormPlayerButton.styled.ts";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { deletePlayer } from "../../../components/fetch/fetch.tsx";
+import {
+  deletePlayer,
+  fetchPlayerById,
+} from "../../../components/fetch/fetch.tsx";
 
 interface DeletePlayerButtonProps {
   playerId: string;
@@ -24,8 +27,17 @@ const DeletePlayerButton: React.FC<DeletePlayerButtonProps> = ({
     },
   });
 
+  const handleDelete = async () => {
+    const player = await fetchPlayerById(playerId);
+    if (player.teamId) {
+      alert("Cannot delete a player who is assigned to a team.");
+      return;
+    }
+    mutation.mutate();
+  };
+
   return (
-    <DeleteButton onClick={() => mutation.mutate()}>
+    <DeleteButton onClick={handleDelete}>
       Delete
       <RiDeleteBinLine />
     </DeleteButton>

@@ -1,50 +1,96 @@
-# React + TypeScript + Vite
+# FootballApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Opis projektu
 
-Currently, two official plugins are available:
+FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sportowych oraz zarządzania bazą danych zawierającą graczy, drużyny i rozgrywki.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Funkcjonalności
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. Baza graczy
 
-- Configure the top-level `parserOptions` property like this:
+- Lista graczy.
+- Dodawanie nowych graczy.
+- Edycja istniejących graczy.
+- Usuwanie graczy z potwierdzeniem (zabezpieczenie przed usunięciem gracza przypisanego do drużyny).
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+### 2. Baza drużyn
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Lista drużyn.
+- Dodawanie drużyn wraz z przypisywaniem zawodników (każdy zawodnik może być przypisany tylko raz).
+- Edycja danych drużyn i ich składu.
+- Usuwanie drużyn z potwierdzeniem (zabezpieczenie przed usunięciem drużyn biorących udział w rozgrywkach).
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+### 3. Baza rozgrywek
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+- Lista rozgrywek.
+- Dodawanie nowych rozgrywek (wprowadzenie drużyn, wyniku, daty, czasu trwania i lokalizacji).
+- Edycja istniejących rozgrywek.
+
+### 4. Statystyki
+
+- Informacje o ostatniej rozegranej rozgrywce (drużyny, data, czas trwania, miejsce, wynik).
+- Wykres przedstawiający liczbę rozgrywek w wybranym okresie (dziennie/tygodniowo/miesięcznie).
+- Top 3 drużyn pod względem liczby zdobytych goli.
+
+---
+
+## Technologie
+
+- **Frontend:** React z użyciem `react-query`.
+- **Styling:** `styled-components` z obsługą dwóch motywów (jasny i ciemny).
+- **Backend:** `json-server` jako baza danych z kolekcjami:
+  - `players` (gracze).
+  - `teams` (drużyny).
+  - `games` (rozgrywki).
+- **Walidacja:** formularze z walidacją poprawności danych.
+- **Zarządzanie kodem:** Linter oraz Husky do automatycznego formatowania kodu.
+- **Tryb StrictMode:** aplikacja działa poprawnie w trybie StrictMode Reacta.
+
+---
+
+## Wymagania systemowe
+
+- Node.js w wersji 20 lub wyższej.
+- pnpm lub yarn jako menedżer pakietów.
+
+---
+
+## Instalacja
+
+1. Sklonuj repozytorium:
+   ```bash
+   git clone https://github.com/MariuszRudnik/Frontowcy-FootballApp/
+   ```
+2. Przejdź do katalogu projektu:
+   ```bash
+   cd footballapp
+   ```
+3. Zainstaluj zależności:
+   ```bash
+   pnpm install
+   ```
+4. Uruchom `json-server`:
+   ```bash
+   json-server --watch db.json
+   ```
+5. Uruchom aplikację:
+   ```bash
+   pnpm start
+   ```
+
+---
+
+## Przydatne komendy
+
+- Uruchomienie lintera:
+  ```bash
+  pnpm run lint
+  ```
+- Uruchomienie testów:
+  ```bash
+  pnpm run test
+  ```
+
+---

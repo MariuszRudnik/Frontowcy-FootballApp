@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  Button,
+  ButtonEdit,
   CloseButton,
   Form,
   FormWrapper,
@@ -99,11 +99,11 @@ const FormUpdatePlayer: React.FC<FormUpdatePlayerProps> = ({
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
-          <Button type="submit" isPending={mutation.status === "pending"}>
+          <ButtonEdit type="submit" isPending={mutation.status === "pending"}>
             {mutation.status === "pending"
               ? "Updating Player..."
               : "Update Player"}
-          </Button>
+          </ButtonEdit>
         </Form>
       </FormWrapper>
     </Overlay>

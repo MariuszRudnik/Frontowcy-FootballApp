@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPlayers, Player } from "../../components/fetch/fetch.tsx";
+import {
+  fetchPlayers,
+  fetchTeams,
+  Player,
+  Team,
+} from "../../components/fetch/fetch.tsx";
 import {
   AddPlayerButton,
   ErrorMessage,
@@ -9,7 +14,7 @@ import {
   TopWrapper,
   Wrapper,
 } from "./playersStyled.styled.ts";
-import FormAddPlayers from "./Components/formAddPlayers.tsx";
+import FormAddPlayers from "./Components/FormAddPlayers.tsx";
 import FormUpdatePlayer from "./Components/FormUpdatePlayer.tsx";
 import {
   ButtonWrapper,
@@ -23,6 +28,7 @@ const PlayersList: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
+  const [teams, setTeams] = useState<Team[]>([]);
 
   const {
     data: players,
@@ -33,10 +39,30 @@ const PlayersList: React.FC = () => {
     queryFn: fetchPlayers,
   });
 
+  useEffect(() => {
+    const fetchTeamsData = async () => {
+      const teamsData = await fetchTeams();
+      setTeams(teamsData);
+    };
+
+    fetchTeamsData();
+  }, []);
+
   const handleEditClick = (playerId: string) => {
     setSelectedPlayerId(playerId);
     setShowUpdateForm(true);
   };
+
+  function getTeamName(
+    teamId: string | number | null | undefined,
+    teams: Team[],
+  ): string {
+    if (teamId === null || teamId === undefined) {
+      return "None";
+    }
+    const team = teams.find((team) => team.id === teamId.toString());
+    return team ? team.name : "None";
+  }
 
   return (
     <Wrapper>
@@ -65,13 +91,12 @@ const PlayersList: React.FC = () => {
       <PlayerList>
         {players?.map((player) => (
           <PlayerItem key={player.id}>
-            {player.firstName} {player.lastName} (Team ID:{" "}
-            {player.teamId ?? "None"})
+            {player.firstName} {player.lastName} (Team:{" "}
+            {getTeamName(player.teamId, teams)})
             <ButtonWrapper>
               <EditButton onClick={() => handleEditClick(player.id)}>
                 Edit <BiSolidEdit />
               </EditButton>
-
               <DeletePlayerButton playerId={player.id} />
             </ButtonWrapper>
           </PlayerItem>

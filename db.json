@@ -1,44 +1,31 @@
 {
   "players": [
     {
-      "id": "1734870406147",
-      "firstName": "Jan",
-      "lastName": "Paweł",
-      "teamId": null
-    },
-    {
-      "id": "1734870428640",
-      "firstName": "Michał ",
-      "lastName": "Nowak",
-      "teamId": null
-    },
-    {
       "id": "1734870518437",
       "firstName": "Now ",
       "lastName": "Produk",
-      "teamId": null
+      "teamId": "d0d3"
+    },
+    {
+      "id": "1734890499162",
+      "firstName": "Nowy",
+      "lastName": "Stary",
+      "teamId": "e76b"
     }
   ],
   "teams": [
     {
-      "id": "1",
-      "name": "Red Dragons",
-      "foundedYear": 1990,
-      "location": "New York",
-      "players": [1]
+      "id": "d0d3",
+      "name": "Hura ",
+      "foundedYear": 1993,
+      "location": "Polad2",
+      "players": ["1734870518437"]
     },
     {
-      "id": "2",
-      "name": "Blue Sharks",
-      "foundedYear": 1985,
-      "location": "Los Angeles",
-      "players": [3]
-    },
-    {
-      "id": "3",
-      "name": "Green Eagles",
-      "foundedYear": 2000,
-      "location": "Chicago",
+      "id": "e76b",
+      "name": "Fifa",
+      "foundedYear": 1993,
+      "location": "Poland",
       "players": []
     }
   ],

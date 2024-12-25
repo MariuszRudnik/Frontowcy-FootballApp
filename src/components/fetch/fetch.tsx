@@ -2,7 +2,7 @@ export interface Player {
   id: string;
   firstName: string;
   lastName: string;
-  teamId: number | null;
+  teamId: number | string | null;
 }
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -87,7 +87,8 @@ export interface Team {
   name: string;
   foundedYear: number;
   location: string;
-  players: number[];
+  teamId?: string;
+  players: number[] | string[];
 }
 
 export const fetchGames = async (): Promise<Game[]> => {
@@ -127,7 +128,6 @@ export const addTeam = async (team: Omit<Team, "id">): Promise<Team> => {
 
   const newTeam = await response.json();
 
-  // Update each player's teamId without changing other fields
   await Promise.all(
     team.players.map(async (playerId) => {
       const playerResponse = await fetch(`${BASE_URL}/players/${playerId}`);
@@ -179,5 +179,26 @@ export const updateTeam = async (team: Team): Promise<Team> => {
   if (!response.ok) {
     throw new Error("Failed to update team");
   }
+  return response.json();
+};
+
+export const addGame = async (game: Omit<Game, "id">): Promise<Game> => {
+  const newGame = {
+    ...game,
+    id: Date.now().toString(),
+  };
+
+  const response = await fetch(`${BASE_URL}/games`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newGame),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to add game.");
+  }
+
   return response.json();
 };

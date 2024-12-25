@@ -4,13 +4,19 @@
       "id": "1734870518437",
       "firstName": "Now ",
       "lastName": "Produk",
-      "teamId": "d0d3"
+      "teamId": null
     },
     {
       "id": "1734890499162",
       "firstName": "Nowy",
       "lastName": "Stary",
       "teamId": "e76b"
+    },
+    {
+      "id": "1735134980056",
+      "firstName": "Tomasz ",
+      "lastName": "Lewandowski",
+      "teamId": null
     }
   ],
   "teams": [
@@ -19,7 +25,7 @@
       "name": "Hura ",
       "foundedYear": 1993,
       "location": "Polad2",
-      "players": ["1734870518437"]
+      "players": []
     },
     {
       "id": "e76b",
@@ -55,6 +61,19 @@
       },
       "team1Id": 2,
       "team2Id": 3
+    },
+    {
+      "id": "1735149858640",
+      "title": "Nowy mecz",
+      "date": "2023-03-21",
+      "location": "Poland",
+      "duration": 90,
+      "team1Id": "d0d3",
+      "team2Id": "e76b",
+      "score": {
+        "team1": 4,
+        "team2": 3
+      }
     }
   ]
 }

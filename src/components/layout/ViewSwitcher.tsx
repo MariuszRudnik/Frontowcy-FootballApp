@@ -51,8 +51,8 @@ const View = styled.div<ViewProps>`
     right: 0;
     bottom: 0;
     background-image: url("/src/components/screen/players.png");
-    background-size: cover;
-    background-position: center;
+    background-position: right;
+    background-repeat: no-repeat;
     opacity: 0.5;
     z-index: 0;
   }

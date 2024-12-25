@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchGames, Game } from "../../components/fetch/fetch.tsx";
 import styled from "styled-components";
+import FormAddGames from "./FormAddGames.tsx";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -9,7 +10,8 @@ const Wrapper = styled.div`
 
 const TopWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 `;
 
@@ -39,7 +41,19 @@ const GameItem = styled.div`
   align-items: center;
 `;
 
+const AddGameButton = styled.button`
+  padding: 10px 20px;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+`;
+
 const GamesList: React.FC = () => {
+  const [showForm, setShowForm] = useState(false);
+
   const {
     data: games,
     isLoading,
@@ -51,8 +65,12 @@ const GamesList: React.FC = () => {
 
   return (
     <Wrapper>
+      {showForm && <FormAddGames isOpen={showForm} setIsOpen={setShowForm} />}
       <TopWrapper>
         <h1>Games List</h1>
+        <AddGameButton onClick={() => setShowForm(!showForm)}>
+          {showForm ? "Close Form" : "Add Game"}
+        </AddGameButton>
       </TopWrapper>
 
       {isLoading && <p>Loading...</p>}

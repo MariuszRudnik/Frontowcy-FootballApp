@@ -43,19 +43,6 @@
   ],
   "games": [
     {
-      "id": "2",
-      "title": "City Derby",
-      "date": "2023-12-05",
-      "location": "Los Angeles Arena",
-      "duration": 125,
-      "score": {
-        "team1": 3,
-        "team2": 3
-      },
-      "team1Id": "e76b",
-      "team2Id": "e76b"
-    },
-    {
       "id": "1735149858640",
       "title": "Nowy mecz",
       "date": "2023-03-21",

@@ -34,12 +34,33 @@ const Button = styled.button<ButtonProps>`
 `;
 
 const View = styled.div<ViewProps>`
+  position: relative;
   margin-top: 20px;
   padding: 10px 20px;
   background-color: ${(props) => props.bgColor};
   color: beige;
   border-radius: 10px;
   font-size: 18px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/src/components/screen/players.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 `;
 
 const ViewSwitcher: React.FC = () => {

@@ -8,6 +8,7 @@ import {
 import LastGame from "./LastGame.tsx";
 import Top3 from "./Top3.tsx";
 import Chart from "./Chart.tsx";
+import { StatisticsStyled } from "./Statistics.styled.tsx";
 
 function Statistics() {
   const {
@@ -28,7 +29,7 @@ function Statistics() {
   });
 
   return (
-    <div>
+    <StatisticsStyled>
       <LastGame
         games={games}
         isErrorGames={isErrorGames}
@@ -38,7 +39,7 @@ function Statistics() {
       />
       <Top3 teams={teams} games={games} />
       <Chart />
-    </div>
+    </StatisticsStyled>
   );
 }
 

@@ -1,59 +1,104 @@
 {
   "players": [
     {
-      "id": "1734870518437",
-      "firstName": "Nowe",
-      "lastName": "Produk",
+      "id": "1735211106517",
+      "firstName": "Mateo",
+      "lastName": "Lopez",
+      "teamId": "2889"
+    },
+    {
+      "id": "1735211116476",
+      "firstName": "Oliver",
+      "lastName": "Hernández",
       "teamId": null
     },
     {
-      "id": "1734890499162",
-      "firstName": "Nowe",
-      "lastName": "Stary",
-      "teamId": "e76b"
+      "id": "1735211126391",
+      "firstName": "Liam",
+      "lastName": "Silva",
+      "teamId": "5b49"
     },
     {
-      "id": "1735134980056",
-      "firstName": "Tomasz ",
-      "lastName": "Lewandowski",
+      "id": "1735211138781",
+      "firstName": "Gabriel ",
+      "lastName": "Costa",
+      "teamId": "5b49"
+    },
+    {
+      "id": "1735211148801",
+      "firstName": "Alexander",
+      "lastName": "Ramos",
+      "teamId": "9272"
+    },
+    {
+      "id": "1735211158641",
+      "firstName": "Lucas",
+      "lastName": "Pereira",
       "teamId": null
     },
     {
-      "id": "1735154259734",
-      "firstName": "Robert",
-      "lastName": "Lewandowski",
-      "teamId": null
+      "id": "1735211183140",
+      "firstName": "Noah ",
+      "lastName": "Fernández",
+      "teamId": "9272"
     }
   ],
   "teams": [
     {
-      "id": "d0d3",
-      "name": "Hura 2",
-      "foundedYear": 1993,
-      "location": "Polad2",
+      "id": "2889",
+      "name": "FC Barcelona",
+      "foundedYear": 1899,
+      "location": "Barcelona, Hiszpania",
+      "players": [1735211106517]
+    },
+    {
+      "id": "5b49",
+      "name": "Manchester United",
+      "foundedYear": 1878,
+      "location": "Manchester, Anglia",
+      "players": [1735211126391, 1735211138781]
+    },
+    {
+      "id": "f121",
+      "name": "Real Madrid CF",
+      "foundedYear": 1902,
+      "location": "Madryt, Hiszpania",
       "players": []
     },
     {
-      "id": "e76b",
-      "name": "Fifa",
-      "foundedYear": 1993,
-      "location": "Poland",
-      "players": []
+      "id": "9272",
+      "name": "Bayern Monachium",
+      "foundedYear": 1900,
+      "location": "Monachium, Niemcy",
+      "players": [1735211148801, 1735211183140]
     }
   ],
   "games": [
     {
-      "id": "1735149858640",
-      "title": "Nowy mecz",
-      "date": "2023-03-21",
-      "location": "Poland",
-      "duration": 100,
+      "id": "1735211453991",
+      "title": "Season Opener",
+      "date": "2024-12-24",
+      "location": "New York Stadium",
+      "duration": 90,
+      "team1Id": "2889",
+      "team2Id": "f121",
       "score": {
-        "team1": 9,
-        "team2": 6
-      },
-      "team1Id": "d0d3",
-      "team2Id": "e76b"
+        "team1": 13,
+        "team2": 2
+      }
+    },
+    {
+      "id": "1735211574441",
+      "title": "World championship ",
+      "date": "2024-12-28",
+      "location": "German",
+      "duration": 90,
+      "team1Id": "f121",
+      "team2Id": "9272",
+      "score": {
+        "team1": 3,
+        "team2": 5
+      }
     }
   ]
 }

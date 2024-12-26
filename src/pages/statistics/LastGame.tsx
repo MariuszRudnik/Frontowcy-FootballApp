@@ -1,4 +1,9 @@
 import { Game } from "../../components/fetch/fetch.tsx";
+import {
+  DivStatistics,
+  ListLiStatistics,
+  ListUlStatistics,
+} from "./Statistics.styled.tsx";
 
 interface Props {
   games: Game[] | undefined;
@@ -20,22 +25,24 @@ function LastGame({
 
   const lastGame = games?.[games.length - 1];
   return (
-    <div>
-      <h1>Statistics</h1>
+    <DivStatistics>
+      <h1>Last Game</h1>
       {lastGame ? (
-        <ul>
-          <li>Title: {lastGame.title}</li>
-          <li>Date: {lastGame.date}</li>
-          <li>Location: {lastGame.location}</li>
-          <li>Duration: {lastGame.duration} minutes</li>
-          <li>
+        <ListUlStatistics>
+          <ListLiStatistics>Title: {lastGame.title}</ListLiStatistics>
+          <ListLiStatistics>Date: {lastGame.date}</ListLiStatistics>
+          <ListLiStatistics>Location: {lastGame.location}</ListLiStatistics>
+          <ListLiStatistics>
+            Duration: {lastGame.duration} minutes
+          </ListLiStatistics>
+          <ListLiStatistics>
             Score: {lastGame.score.team1} - {lastGame.score.team2}
-          </li>
-        </ul>
+          </ListLiStatistics>
+        </ListUlStatistics>
       ) : (
         <p>No games played yet.</p>
       )}
-    </div>
+    </DivStatistics>
   );
 }
 

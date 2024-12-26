@@ -1,4 +1,9 @@
 import { Game, Team } from "../../components/fetch/fetch.tsx";
+import {
+  DivStatistics,
+  ListLiStatistics,
+  ListUlStatistics,
+} from "./Statistics.styled.tsx";
 
 interface Props {
   teams: Team[] | undefined;
@@ -20,18 +25,18 @@ function Top3({ teams, games }: Props) {
     .slice(0, 3);
 
   return (
-    <div>
+    <DivStatistics>
       <div>
         <h2>Top 3 Teams by Goals</h2>
-        <ul>
+        <ListUlStatistics>
           {topTeams?.map((team) => (
-            <li key={team.id}>
+            <ListLiStatistics key={team.id}>
               {team.name}: {team.totalGoals} goals
-            </li>
+            </ListLiStatistics>
           ))}
-        </ul>
+        </ListUlStatistics>
       </div>
-    </div>
+    </DivStatistics>
   );
 }
 

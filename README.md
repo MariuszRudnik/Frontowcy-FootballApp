@@ -110,13 +110,6 @@ FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sport
 
   - Poprawa UI/UX oraz dodanie animacji i mikrointerakcji.
 
-- **Funkcjonalności:**
-
-  - Eksport danych (PDF/CSV) i filtrowanie w listach.
-
-- **Optymalizacja:**
-  - Zwiększenie wydajności ładowania danych i komponentów.
-
 ---
 
 ![s2](src/components/screen/s2.png)

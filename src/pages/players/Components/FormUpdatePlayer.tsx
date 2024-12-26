@@ -11,14 +11,8 @@ import {
 import {
   fetchPlayerById,
   updatePlayer,
+  Player as FetchPlayer,
 } from "../../../components/fetch/fetch.tsx";
-
-interface Player {
-  id: string;
-  firstName: string;
-  lastName: string;
-  teamId: number | null;
-}
 
 interface FormUpdatePlayerProps {
   isOpen: boolean;
@@ -36,7 +30,7 @@ const FormUpdatePlayer: React.FC<FormUpdatePlayerProps> = ({
 
   const queryClient = useQueryClient();
 
-  const { data: player } = useQuery<Player>({
+  const { data: player } = useQuery<FetchPlayer>({
     queryKey: ["player", playerId],
     queryFn: () => fetchPlayerById(playerId),
     enabled: isOpen,
@@ -49,7 +43,7 @@ const FormUpdatePlayer: React.FC<FormUpdatePlayerProps> = ({
     }
   }, [player]);
 
-  const mutation = useMutation<Player, Error, Player>({
+  const mutation = useMutation<FetchPlayer, Error, FetchPlayer>({
     mutationFn: updatePlayer,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["players"] });

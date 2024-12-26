@@ -1,5 +1,7 @@
 # FootballApp
 
+![s1](src/components/screen/s1.png)
+
 ## Opis projektu
 
 FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sportowych oraz zarządzania bazą danych zawierającą graczy, drużyny i rozgrywki.
@@ -60,9 +62,17 @@ FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sport
 ## Instalacja
 
 1. Sklonuj repozytorium:
+
    ```bash
    git clone https://github.com/MariuszRudnik/Frontowcy-FootballApp/
    ```
+
+   2.Zmień nazwę pliku .env.template na .env:
+
+   ```bash
+   mv .env.template .env
+   ```
+
 2. Przejdź do katalogu projektu:
    ```bash
    cd footballapp
@@ -79,6 +89,33 @@ FootballApp to aplikacja służąca do prezentowania podsumowań rozgrywek sport
    ```bash
    pnpm start
    ```
+
+---
+
+## Przyszłe prace
+
+- **Responsywność (RWD):**
+
+  - Dostosowanie aplikacji do urządzeń mobilnych i tabletów.
+
+- **Testowanie:**
+
+  - Dodanie testów jednostkowych, integracyjnych i E2E.
+
+- **Refaktoryzacja:**
+
+  - Uporządkowanie kodu dla większej czytelności i łatwiejszego utrzymania.
+
+- **Wygląd:**
+
+  - Poprawa UI/UX oraz dodanie animacji i mikrointerakcji.
+
+---
+
+![s2](src/components/screen/s2.png)
+![s3](src/components/screen/s3.png)
+![s4](src/components/screen/s4.png)
+![s4](src/components/screen/s5.png)
 
 ---
 

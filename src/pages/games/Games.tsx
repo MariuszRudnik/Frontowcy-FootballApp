@@ -1,45 +1,33 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { fetchGames, Game } from "../../components/fetch/fetch.tsx";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  padding: 20px;
-`;
-
-const TopWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-
-const ErrorMessage = styled.div`
-  color: red;
-  font-weight: bold;
-`;
-
-const GameList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`;
-
-const GameItem = styled.div`
-  padding: 10px;
-  width: 80%;
-  background-color: #f0ad4e;
-  border: 1px solid #d9534f;
-  border-radius: 5px;
-  text-align: left;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+import React, { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  fetchGames,
+  fetchTeams,
+  deleteGame,
+  Game,
+  Team,
+} from "../../components/fetch/fetch.tsx";
+import FormAddGames from "./FormAddGames.tsx";
+import { EditButton } from "../players/Components/FormPlayerButton.styled.ts";
+import FormUpdateGame from "./ FormUpdateGame.tsx";
+import {
+  AddGameButton,
+  DeleteButton,
+  ErrorMessage,
+  GameItem,
+  GameList,
+  TopWrapper,
+  Wrapper,
+  WrapperButton,
+} from "./GameStyle.styled.ts";
 
 const GamesList: React.FC = () => {
+  const [showForm, setShowForm] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [selectedGameId, setSelectedGameId] = useState<string | null>(null);
+
+  const queryClient = useQueryClient();
+
   const {
     data: games,
     isLoading,
@@ -49,10 +37,51 @@ const GamesList: React.FC = () => {
     queryFn: fetchGames,
   });
 
+  const { data: teams } = useQuery<Team[]>({
+    queryKey: ["teams"],
+    queryFn: fetchTeams,
+  });
+
+  const deleteMutation = useMutation<void, Error, string>({
+    mutationFn: deleteGame,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["games"] });
+    },
+    onError: () => {
+      alert("Failed to delete game.");
+    },
+  });
+
+  const handleEditClick = (gameId: string) => {
+    setSelectedGameId(gameId);
+    setShowUpdateForm(true);
+  };
+
+  const handleDeleteClick = (gameId: string) => {
+    if (window.confirm("Are you sure you want to delete this game?")) {
+      deleteMutation.mutate(gameId);
+    }
+  };
+
+  const getTeamName = (teamId: string) => {
+    return teams?.find((team) => team.id === teamId)?.name || "Unknown Team";
+  };
+
   return (
     <Wrapper>
+      {showForm && <FormAddGames isOpen={showForm} setIsOpen={setShowForm} />}
+      {showUpdateForm && selectedGameId && (
+        <FormUpdateGame
+          isOpen={showUpdateForm}
+          setIsOpen={setShowUpdateForm}
+          gameId={selectedGameId}
+        />
+      )}
       <TopWrapper>
         <h1>Games List</h1>
+        <AddGameButton onClick={() => setShowForm(!showForm)}>
+          {showForm ? "Close Form" : "Add Game"}
+        </AddGameButton>
       </TopWrapper>
 
       {isLoading && <p>Loading...</p>}
@@ -71,15 +100,25 @@ const GamesList: React.FC = () => {
                 Date: {game.date} | Location: {game.location}
               </p>
               <p>Duration: {game.duration} minutes</p>
+              <div>
+                <p>
+                  Score: {game.score.team1} - {game.score.team2}
+                </p>
+                <p>
+                  Teams: {getTeamName(game.team1Id)} vs{" "}
+                  {getTeamName(game.team2Id)}
+                </p>
+              </div>
             </div>
-            <div>
-              <p>
-                Score: {game.score.team1} - {game.score.team2}
-              </p>
-              <p>
-                Teams: {game.team1Id} vs {game.team2Id}
-              </p>
-            </div>
+
+            <WrapperButton>
+              <EditButton onClick={() => handleEditClick(game.id)}>
+                Edit
+              </EditButton>
+              <DeleteButton onClick={() => handleDeleteClick(game.id)}>
+                Delete
+              </DeleteButton>
+            </WrapperButton>
           </GameItem>
         ))}
       </GameList>

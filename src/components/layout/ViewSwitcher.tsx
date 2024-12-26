@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PlayersList from "../../pages/players/players.tsx";
 import TeamsList from "../../pages/teams/Teams.tsx";
 import GamesList from "../../pages/games/Games.tsx";
+import Statistics from "../../pages/statistics/Statistics.tsx";
 
 interface ButtonProps {
   bgColor?: string;
@@ -51,8 +52,8 @@ const View = styled.div<ViewProps>`
     right: 0;
     bottom: 0;
     background-image: url("/src/components/screen/players.png");
-    background-size: cover;
-    background-position: center;
+    background-position: right;
+    background-repeat: no-repeat;
     opacity: 0.5;
     z-index: 0;
   }
@@ -81,6 +82,9 @@ const ViewSwitcher: React.FC = () => {
       <Button bgColor="#2b513e" onClick={() => handleViewChange("games")}>
         Games
       </Button>
+      <Button bgColor="#2b513e" onClick={() => handleViewChange("statistics")}>
+        Statistics
+      </Button>
 
       {activeView === "players" && (
         <View bgColor={"#2b513e"}>
@@ -95,6 +99,11 @@ const ViewSwitcher: React.FC = () => {
       {activeView === "games" && (
         <View bgColor={"#654d20"}>
           <GamesList />
+        </View>
+      )}
+      {activeView === "statistics" && (
+        <View bgColor={"rgba(235,0,255,0.63)"}>
+          <Statistics />
         </View>
       )}
     </Wrapper>

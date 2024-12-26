@@ -8,14 +8,7 @@ import {
   Input,
   Overlay,
 } from "./FormPlayerButton.styled.ts";
-import { addPlayer } from "../../../components/fetch/fetch.tsx";
-
-interface Player {
-  id: string;
-  firstName: string;
-  lastName: string;
-  teamId: number | null;
-}
+import { addPlayer, Player } from "../../../components/fetch/fetch.tsx";
 
 interface FormPlayerButtonProps {
   isOpen: boolean;
